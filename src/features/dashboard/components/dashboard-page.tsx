@@ -1,7 +1,5 @@
 'use client';
 
-import { ClipboardList, CheckCircle2, Clock, AlertTriangle } from 'lucide-react';
-
 import { Skeleton } from '@/components/ui';
 import { PageHeader } from '@/components/shared';
 

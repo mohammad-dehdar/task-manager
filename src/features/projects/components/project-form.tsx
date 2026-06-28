@@ -22,7 +22,7 @@ export function ProjectForm({ open, onClose, project }: ProjectFormProps) {
   const createMutation = useCreateProject();
   const updateMutation = useUpdateProject();
   const isEditing = !!project;
-  const [selectedColor, setSelectedColor] = useState(PROJECT_COLORS[0].value);
+  const [selectedColor, setSelectedColor] = useState<string>(PROJECT_COLORS[0].value);
 
   const {
     register,

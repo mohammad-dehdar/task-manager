@@ -5,7 +5,6 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 import { Avatar, Dropdown } from '@/components/ui';
-import { cn } from '@/utils';
 
 import type { HeaderProps } from './types';
 import './header.css';

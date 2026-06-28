@@ -2,11 +2,11 @@
 
 import { MoreHorizontal, Calendar, Trash2, Edit } from 'lucide-react';
 
-import { Badge, Checkbox, Dropdown } from '@/components/ui';
+import { Badge, Checkbox, Dropdown, type BadgeColor } from '@/components/ui';
 import { cn } from '@/utils';
 
 import { PRIORITY_MAP, STATUS_MAP } from '../constants';
-import type { Task, TaskPriority, TaskStatus } from '../types';
+import type { Task, TaskStatus } from '../types';
 
 interface TaskCardProps {
   task: Task;
@@ -45,10 +45,10 @@ export function TaskCard({ task, onStatusChange, onEdit, onDelete }: TaskCardPro
         )}
 
         <div className="mt-2 flex items-center gap-2">
-          <Badge color={PRIORITY_MAP[task.priority] as any} size="sm">
+          <Badge color={PRIORITY_MAP[task.priority] as BadgeColor} size="sm">
             {task.priority}
           </Badge>
-          <Badge color={STATUS_MAP[task.status] as any} size="sm">
+          <Badge color={STATUS_MAP[task.status] as BadgeColor} size="sm">
             {task.status}
           </Badge>
           {task.dueDate && (

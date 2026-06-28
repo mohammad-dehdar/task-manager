@@ -26,7 +26,7 @@ export function RegisterForm() {
   });
 
   const onSubmit = (data: RegisterSchema) => {
-    const { confirmPassword: _, ...dto } = data;
+    const dto = { name: data.name, email: data.email, password: data.password };
     registerMutation.mutate(dto);
   };
 

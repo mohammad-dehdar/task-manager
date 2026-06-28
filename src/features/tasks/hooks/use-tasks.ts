@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/constants';
@@ -18,15 +19,17 @@ export function useTasks(filters?: TaskFilter) {
   if (filters?.projectId) params.projectId = filters.projectId;
   if (filters?.search) params.search = filters.search;
 
-  return useQuery({
+  const query = useQuery({
     queryKey: [QUERY_KEYS.TASKS, filters],
     queryFn: () => tasksApi.getAll(Object.keys(params).length ? params : undefined),
-    onSuccess: (data) => {
-      setTasks(data);
-      setLoading(false);
-    },
-    onSettled: () => {
-      setLoading(false);
-    },
   });
+
+  useEffect(() => {
+    if (query.data) {
+      setTasks(query.data);
+    }
+    setLoading(query.isLoading);
+  }, [query.data, query.isLoading, setTasks, setLoading]);
+
+  return query;
 }

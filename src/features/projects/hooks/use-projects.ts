@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/constants';
@@ -11,15 +12,17 @@ export function useProjects() {
   const setProjects = useProjectsStore((s) => s.setProjects);
   const setLoading = useProjectsStore((s) => s.setLoading);
 
-  return useQuery({
+  const query = useQuery({
     queryKey: QUERY_KEYS.PROJECTS,
     queryFn: () => projectsApi.getAll(),
-    onSuccess: (data) => {
-      setProjects(data);
-      setLoading(false);
-    },
-    onSettled: () => {
-      setLoading(false);
-    },
   });
+
+  useEffect(() => {
+    if (query.data) {
+      setProjects(query.data);
+    }
+    setLoading(query.isLoading);
+  }, [query.data, query.isLoading, setProjects, setLoading]);
+
+  return query;
 }

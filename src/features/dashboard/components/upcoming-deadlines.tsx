@@ -1,6 +1,6 @@
 import { Calendar } from 'lucide-react';
 
-import { Badge } from '@/components/ui';
+import { Badge, type BadgeColor } from '@/components/ui';
 
 import { PRIORITY_MAP } from '@/features/tasks/constants';
 import type { UpcomingTask } from '../types';
@@ -31,7 +31,7 @@ export function UpcomingDeadlines({ tasks }: UpcomingDeadlinesProps) {
                   <span className="text-sm text-neutral-700 truncate">{task.title}</span>
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
-                  <Badge color={PRIORITY_MAP[task.priority] as any} size="sm">
+                  <Badge color={PRIORITY_MAP[task.priority] as BadgeColor} size="sm">
                     {task.priority}
                   </Badge>
                   <span className={`text-xs ${isUrgent ? 'text-error-600 font-medium' : 'text-neutral-500'}`}>

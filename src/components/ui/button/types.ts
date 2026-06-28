@@ -17,6 +17,7 @@ export interface ButtonBaseProps {
   loadingText?: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  className?: string;
 }
 
 export interface ButtonAsButtonProps

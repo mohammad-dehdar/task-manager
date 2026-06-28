@@ -5,6 +5,7 @@ import { Search, X } from 'lucide-react';
 import { Input, Select } from '@/components/ui';
 import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../constants';
 import { useTasksStore } from '../store';
+import type { TaskStatus, TaskPriority } from '../types';
 
 export function TaskFilters() {
   const filters = useTasksStore((s) => s.filters);
@@ -34,7 +35,7 @@ export function TaskFilters() {
         placeholder="All Status"
         value={filters.status || ''}
         onChange={(e) =>
-          setFilters({ status: (e.target.value as any) || undefined })
+          setFilters({ status: (e.target.value as TaskStatus) || undefined })
         }
         options={STATUS_OPTIONS}
       />
@@ -42,7 +43,7 @@ export function TaskFilters() {
         placeholder="All Priority"
         value={filters.priority || ''}
         onChange={(e) =>
-          setFilters({ priority: (e.target.value as any) || undefined })
+          setFilters({ priority: (e.target.value as TaskPriority) || undefined })
         }
         options={PRIORITY_OPTIONS}
       />

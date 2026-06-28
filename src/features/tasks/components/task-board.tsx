@@ -2,8 +2,6 @@
 
 import type { Task, TaskStatus } from '../types';
 import { TaskCard } from './task-card';
-import { EmptyState } from '@/components/shared';
-import { ClipboardList } from 'lucide-react';
 
 interface TaskBoardProps {
   tasks: Task[];

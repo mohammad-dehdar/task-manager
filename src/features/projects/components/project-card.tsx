@@ -3,7 +3,6 @@
 import { MoreHorizontal, Trash2, Edit, FolderKanban } from 'lucide-react';
 
 import { Badge, Dropdown } from '@/components/ui';
-import { cn } from '@/utils';
 
 import type { Project } from '../types';
 

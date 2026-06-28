@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui';
+import { Badge, type BadgeColor } from '@/components/ui';
 
 import { STATUS_MAP } from '@/features/tasks/constants';
 import type { RecentTask } from '../types';
@@ -24,7 +24,7 @@ export function RecentTasks({ tasks }: RecentTasksProps) {
         {tasks.map((task) => (
           <div key={task.id} className="flex items-center justify-between py-2 border-b border-neutral-100 last:border-0">
             <span className="text-sm text-neutral-700 truncate">{task.title}</span>
-            <Badge color={STATUS_MAP[task.status] as any} size="sm">
+            <Badge color={STATUS_MAP[task.status] as BadgeColor} size="sm">
               {task.status}
             </Badge>
           </div>

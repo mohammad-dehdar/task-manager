@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import type { Task, TaskFilter, TaskStatus } from '../types';
+import type { Task, TaskFilter } from '../types';
 
 interface TasksState {
   tasks: Task[];

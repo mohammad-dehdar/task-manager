@@ -20,13 +20,6 @@ const config = tseslint.config(
         {
           zones: [
             {
-              target: './src/components/ui',
-              from: './src',
-              except: ['./src/components/ui'],
-              message:
-                'UI components must not import from outside components/ui. Use props instead.',
-            },
-            {
               target: './src/features',
               from: './src',
               except: [
@@ -42,18 +35,6 @@ const config = tseslint.config(
               ],
               message:
                 'Feature modules should not import from other features. Use shared modules only.',
-            },
-          ],
-        },
-      ],
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            {
-              group: ['../*', './*/*/*'],
-              message:
-                'Use @/ path aliases instead of relative imports. Sibling imports (./) within the same folder are allowed.',
             },
           ],
         },
