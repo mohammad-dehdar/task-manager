@@ -17,7 +17,7 @@ interface TaskCardProps {
 
 export function TaskCard({ task, onStatusChange, onEdit, onDelete }: TaskCardProps) {
   return (
-    <div className="group flex items-start gap-3 rounded-xl border border-neutral-200 bg-white p-4 transition-all hover:shadow-sm">
+    <div className="group flex items-start gap-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 transition-all hover:shadow-sm">
       <Checkbox
         checked={task.status === 'done'}
         onChange={() =>
@@ -32,8 +32,8 @@ export function TaskCard({ task, onStatusChange, onEdit, onDelete }: TaskCardPro
         <div className="flex items-center gap-2">
           <h3
             className={cn(
-              'text-sm font-medium text-neutral-800 truncate',
-              task.status === 'done' && 'line-through text-neutral-400',
+              'text-sm font-medium text-neutral-800 dark:text-neutral-100 truncate',
+              task.status === 'done' && 'line-through text-neutral-400 dark:text-neutral-500',
             )}
           >
             {task.title}
@@ -41,7 +41,7 @@ export function TaskCard({ task, onStatusChange, onEdit, onDelete }: TaskCardPro
         </div>
 
         {task.projectName && (
-          <p className="mt-1 text-xs text-neutral-500">{task.projectName}</p>
+          <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">{task.projectName}</p>
         )}
 
         <div className="mt-2 flex items-center gap-2">
@@ -52,7 +52,7 @@ export function TaskCard({ task, onStatusChange, onEdit, onDelete }: TaskCardPro
             {task.status}
           </Badge>
           {task.dueDate && (
-            <span className="flex items-center gap-1 text-xs text-neutral-400">
+            <span className="flex items-center gap-1 text-xs text-neutral-400 dark:text-neutral-500">
               <Calendar size={12} />
               {new Date(task.dueDate).toLocaleDateString()}
             </span>
@@ -62,8 +62,8 @@ export function TaskCard({ task, onStatusChange, onEdit, onDelete }: TaskCardPro
 
       <Dropdown
         trigger={
-          <button className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded-md hover:bg-neutral-100">
-            <MoreHorizontal size={16} className="text-neutral-400" />
+          <button className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700">
+            <MoreHorizontal size={16} className="text-neutral-400 dark:text-neutral-500" />
           </button>
         }
         items={[

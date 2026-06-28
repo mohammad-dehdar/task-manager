@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { QUERY_KEYS } from '@/constants';
@@ -10,11 +11,16 @@ import type { UpdateTaskDto } from '../types';
 export function useUpdateTask() {
   const queryClient = useQueryClient();
 
-  return useMutation({
+  const mutation = useMutation({
     mutationFn: ({ id, dto }: { id: string; dto: UpdateTaskDto }) =>
       tasksApi.update(id, dto),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.TASKS });
-    },
   });
+
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.TASKS });
+    }
+  }, [mutation.isSuccess, queryClient]);
+
+  return mutation;
 }

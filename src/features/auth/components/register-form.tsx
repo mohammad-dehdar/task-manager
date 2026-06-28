@@ -1,15 +1,24 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { Button, Input } from '@/components/ui';
+import { ROUTES } from '@/constants';
 
-import { useRegister } from '../hooks';
+import { authApi } from '../api';
+import { useAuthStore } from '../store';
 import { registerSchema, type RegisterSchema } from '../schema';
 
 export function RegisterForm() {
-  const registerMutation = useRegister();
+  const router = useRouter();
+  const login = useAuthStore((s) => s.login);
+
+  const registerMutation = useMutation({
+    mutationFn: (dto: RegisterSchema) => authApi.register({ name: dto.name, email: dto.email, password: dto.password }),
+  });
 
   const {
     register,
@@ -26,8 +35,13 @@ export function RegisterForm() {
   });
 
   const onSubmit = (data: RegisterSchema) => {
-    const dto = { name: data.name, email: data.email, password: data.password };
-    registerMutation.mutate(dto);
+    registerMutation.mutate(data, {
+      onSuccess: (responseData) => {
+        login(responseData.user, responseData.token);
+        localStorage.setItem('token', responseData.token);
+        router.push(ROUTES.DASHBOARD);
+      },
+    });
   };
 
   return (

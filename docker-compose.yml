@@ -1,0 +1,25 @@
+services:
+  api:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - JWT_SECRET=task-manager-secret-key
+      - DB_PATH=/app/data/data.db
+    volumes:
+      - api-data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build: .
+    ports:
+      - "3002:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  api-data:

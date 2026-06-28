@@ -19,7 +19,7 @@ export default function DashboardLayout({
       />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header onMenuClick={() => setSidebarCollapsed(!sidebarCollapsed)} />
-        <main className="flex-1 overflow-y-auto bg-neutral-50 px-13 py-8">
+        <main className="flex-1 overflow-y-auto bg-neutral-50 dark:bg-neutral-900 px-13 py-8">
           {children}
         </main>
       </div>

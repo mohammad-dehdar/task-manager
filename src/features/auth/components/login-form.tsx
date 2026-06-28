@@ -1,15 +1,24 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { Button, Input } from '@/components/ui';
+import { ROUTES } from '@/constants';
 
-import { useLogin } from '../hooks';
+import { authApi } from '../api';
+import { useAuthStore } from '../store';
 import { loginSchema, type LoginSchema } from '../schema';
 
 export function LoginForm() {
-  const loginMutation = useLogin();
+  const router = useRouter();
+  const login = useAuthStore((s) => s.login);
+
+  const loginMutation = useMutation({
+    mutationFn: (dto: LoginSchema) => authApi.login(dto),
+  });
 
   const {
     register,
@@ -24,7 +33,13 @@ export function LoginForm() {
   });
 
   const onSubmit = (data: LoginSchema) => {
-    loginMutation.mutate(data);
+    loginMutation.mutate(data, {
+      onSuccess: (responseData) => {
+        login(responseData.user, responseData.token);
+        localStorage.setItem('token', responseData.token);
+        router.push(ROUTES.DASHBOARD);
+      },
+    });
   };
 
   return (

@@ -11,9 +11,9 @@ interface TaskBoardProps {
 }
 
 const COLUMNS: { status: TaskStatus; label: string; color: string }[] = [
-  { status: 'todo', label: 'To Do', color: 'bg-neutral-100' },
-  { status: 'in-progress', label: 'In Progress', color: 'bg-info-50' },
-  { status: 'done', label: 'Done', color: 'bg-success-50' },
+  { status: 'todo', label: 'To Do', color: 'bg-neutral-100 dark:bg-neutral-800' },
+  { status: 'in-progress', label: 'In Progress', color: 'bg-info-50 dark:bg-info-900/30' },
+  { status: 'done', label: 'Done', color: 'bg-success-50 dark:bg-success-900/30' },
 ];
 
 export function TaskBoard({ tasks, onEdit, onDelete, onStatusChange }: TaskBoardProps) {
@@ -27,14 +27,14 @@ export function TaskBoard({ tasks, onEdit, onDelete, onStatusChange }: TaskBoard
       {grouped.map((col) => (
         <div key={col.status} className="flex flex-col">
           <div className="flex items-center gap-2 mb-3">
-            <h3 className="text-sm font-medium text-neutral-700">{col.label}</h3>
-            <span className="text-xs text-neutral-400 bg-neutral-100 px-2 py-0.5 rounded-full">
+            <h3 className="text-sm font-medium text-neutral-700 dark:text-neutral-300">{col.label}</h3>
+            <span className="text-xs text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-700 px-2 py-0.5 rounded-full">
               {col.tasks.length}
             </span>
           </div>
           <div className={`flex flex-col gap-2 rounded-xl p-2 min-h-[200px] ${col.color}`}>
             {col.tasks.length === 0 ? (
-              <div className="flex items-center justify-center h-24 text-xs text-neutral-400">
+              <div className="flex items-center justify-center h-24 text-xs text-neutral-400 dark:text-neutral-500">
                 No tasks
               </div>
             ) : (

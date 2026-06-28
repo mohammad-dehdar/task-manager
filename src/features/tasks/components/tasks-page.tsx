@@ -6,9 +6,9 @@ import { Plus, LayoutGrid, List } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { PageHeader, ConfirmDialog } from '@/components/shared';
 
-import { useTasks } from '../hooks';
+import { useTasks, useUpdateTask } from '../hooks';
 import { useTasksStore } from '../store';
-import type { Task } from '../types';
+import type { Task, TaskStatus } from '../types';
 import { TaskFilters } from './task-filters';
 import { TaskList } from './task-list';
 import { TaskBoard } from './task-board';
@@ -22,6 +22,7 @@ export function TasksPage() {
 
   const { data: tasks = [], isLoading } = useTasks(filters);
   const deleteMutation = useDeleteTask();
+  const updateMutation = useUpdateTask();
 
   const [formOpen, setFormOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -45,6 +46,10 @@ export function TasksPage() {
     }
   };
 
+  const handleStatusChange = (id: string, status: TaskStatus) => {
+    updateMutation.mutate({ id, dto: { status } });
+  };
+
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
@@ -60,16 +65,16 @@ export function TasksPage() {
       <TaskFilters />
 
       <div className="flex justify-end">
-        <div className="flex rounded-lg border border-neutral-200 overflow-hidden">
+        <div className="flex rounded-lg border border-neutral-200 dark:border-neutral-700 overflow-hidden">
           <button
             onClick={() => setViewMode('list')}
-            className={`p-2 ${viewMode === 'list' ? 'bg-neutral-100 text-neutral-800' : 'text-neutral-400 hover:text-neutral-600'}`}
+            className={`p-2 ${viewMode === 'list' ? 'bg-neutral-100 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-100' : 'text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300'}`}
           >
             <List size={16} />
           </button>
           <button
             onClick={() => setViewMode('board')}
-            className={`p-2 ${viewMode === 'board' ? 'bg-neutral-100 text-neutral-800' : 'text-neutral-400 hover:text-neutral-600'}`}
+            className={`p-2 ${viewMode === 'board' ? 'bg-neutral-100 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-100' : 'text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300'}`}
           >
             <LayoutGrid size={16} />
           </button>
@@ -82,6 +87,7 @@ export function TasksPage() {
           isLoading={isLoading}
           onEdit={handleEdit}
           onDelete={setDeletingTask}
+          onStatusChange={handleStatusChange}
           onCreateTask={handleCreate}
         />
       ) : (

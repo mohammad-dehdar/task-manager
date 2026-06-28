@@ -5,6 +5,7 @@ import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 import { Avatar, Dropdown } from '@/components/ui';
+import { useAuthStore } from '@/features/auth/store';
 
 import type { HeaderProps } from './types';
 import './header.css';
@@ -12,6 +13,7 @@ import './header.css';
 export function Header({ onMenuClick, title }: HeaderProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const user = useAuthStore((s) => s.user);
 
   useEffect(() => setMounted(true), []);
 
@@ -39,9 +41,10 @@ export function Header({ onMenuClick, title }: HeaderProps) {
         </button>
 
         <Dropdown
-          trigger={<Avatar size="sm" fallback="U" className="cursor-pointer" />}
+          trigger={<Avatar size="sm" fallback={user?.name?.charAt(0) || 'U'} className="cursor-pointer" />}
           items={[
-            { label: 'Profile', onClick: () => {} },
+            { label: user?.name || 'User', onClick: () => {} },
+            { label: user?.email || '', onClick: () => {} },
             { label: 'Settings', onClick: () => {} },
             { label: 'Logout', onClick: () => {}, destructive: true },
           ]}

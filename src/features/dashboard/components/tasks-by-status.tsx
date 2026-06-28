@@ -14,11 +14,11 @@ export function TasksByStatusChart({ data }: TasksByStatusProps) {
   const total = data.todo + data['in-progress'] + data.done;
 
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-5">
-      <h3 className="text-sm font-semibold text-neutral-800 mb-4">Tasks by Status</h3>
+    <div className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-5">
+      <h3 className="text-sm font-semibold text-neutral-800 dark:text-neutral-100 mb-4">Tasks by Status</h3>
 
       {total === 0 ? (
-        <p className="text-sm text-neutral-500">No tasks yet</p>
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">No tasks yet</p>
       ) : (
         <>
           <div className="flex h-3 w-full overflow-hidden rounded-full mb-4">
@@ -40,9 +40,9 @@ export function TasksByStatusChart({ data }: TasksByStatusProps) {
               <div key={s.key} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className={`h-2.5 w-2.5 rounded-full ${s.color}`} />
-                  <span className="text-sm text-neutral-600">{s.label}</span>
+                  <span className="text-sm text-neutral-600 dark:text-neutral-400">{s.label}</span>
                 </div>
-                <span className="text-sm font-medium text-neutral-800">{data[s.key]}</span>
+                <span className="text-sm font-medium text-neutral-800 dark:text-neutral-200">{data[s.key]}</span>
               </div>
             ))}
           </div>
