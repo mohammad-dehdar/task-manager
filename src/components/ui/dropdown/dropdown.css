@@ -1,0 +1,112 @@
+@layer components {
+  .dropdown-wrapper {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    z-index: 50;
+    min-width: 180px;
+    background-color: #ffffff;
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    padding: 4px;
+    animation: dropdown-fade-in 0.1s ease;
+  }
+
+  @keyframes dropdown-fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Positions */
+  .dropdown-bottom-start {
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+  }
+
+  .dropdown-bottom-end {
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+  }
+
+  .dropdown-top-start {
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 4px;
+  }
+
+  .dropdown-top-end {
+    bottom: 100%;
+    right: 0;
+    margin-bottom: 4px;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--color-neutral-700);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.1s ease;
+  }
+
+  .dropdown-item:hover {
+    background-color: var(--color-neutral-100);
+  }
+
+  .dropdown-item:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .dropdown-item-destructive {
+    color: var(--color-error-600);
+  }
+
+  .dropdown-item-destructive:hover {
+    background-color: var(--color-error-50);
+  }
+
+  .dropdown-separator {
+    height: 1px;
+    background-color: var(--color-neutral-200);
+    margin: 4px 0;
+  }
+
+  /* Dark mode */
+  .dark .dropdown-menu {
+    background-color: var(--color-neutral-800);
+    border-color: var(--color-neutral-700);
+  }
+
+  .dark .dropdown-item {
+    color: var(--color-neutral-200);
+  }
+
+  .dark .dropdown-item:hover {
+    background-color: var(--color-neutral-700);
+  }
+
+  .dark .dropdown-separator {
+    background-color: var(--color-neutral-700);
+  }
+}

@@ -1,0 +1,134 @@
+@layer components {
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .input-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-neutral-700);
+  }
+
+  .input-field-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .input {
+    width: 100%;
+    border: 1px solid var(--color-neutral-300);
+    background-color: #ffffff;
+    color: var(--color-neutral-800);
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .input::placeholder {
+    color: var(--color-neutral-400);
+  }
+
+  .input:focus {
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 3px var(--color-primary-100);
+  }
+
+  /* Sizes */
+  .input-sm {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: var(--radius-sm);
+    height: 32px;
+  }
+
+  .input-md {
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: var(--radius-md);
+    height: 40px;
+  }
+
+  .input-lg {
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: var(--radius-lg);
+    height: 48px;
+  }
+
+  /* States */
+  .input-default {
+    border-color: var(--color-neutral-300);
+  }
+
+  .input-error {
+    border-color: var(--color-error-500);
+  }
+
+  .input-error:focus {
+    box-shadow: 0 0 0 3px var(--color-error-100);
+  }
+
+  .input-success {
+    border-color: var(--color-success-500);
+  }
+
+  .input-success:focus {
+    box-shadow: 0 0 0 3px var(--color-success-100);
+  }
+
+  /* Icons */
+  .input-icon-start {
+    position: absolute;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    color: var(--color-neutral-400);
+    pointer-events: none;
+  }
+
+  .input-icon-end {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    color: var(--color-neutral-400);
+  }
+
+  .input-sm ~ .input-icon-start,
+  .input-sm ~ * .input-icon-start {
+    left: 10px;
+  }
+
+  .input-lg ~ .input-icon-start,
+  .input-lg ~ * .input-icon-start {
+    left: 16px;
+  }
+
+  .input-hint {
+    font-size: 12px;
+    color: var(--color-neutral-500);
+    margin: 0;
+  }
+
+  .input-hint-error {
+    color: var(--color-error-500);
+  }
+
+  /* Dark mode */
+  .dark .input {
+    background-color: var(--color-neutral-800);
+    border-color: var(--color-neutral-600);
+    color: var(--color-neutral-100);
+  }
+
+  .dark .input::placeholder {
+    color: var(--color-neutral-500);
+  }
+
+  .dark .input-label {
+    color: var(--color-neutral-200);
+  }
+}

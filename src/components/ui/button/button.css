@@ -1,0 +1,357 @@
+@layer components {
+  /* ============================================================
+     Button Base
+     ============================================================ */
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    outline: none;
+  }
+
+  .button:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+
+  .button:disabled,
+  .button[aria-disabled='true'] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* --- Sizes (text) --- */
+  .button-text-xs {
+    padding: 4px 16px;
+    font-size: 12px;
+    border-radius: var(--radius-md);
+    line-height: 20px;
+  }
+
+  .button-text-sm {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: var(--radius-lg);
+    line-height: 22px;
+  }
+
+  .button-text-md {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: var(--radius-xl);
+    line-height: 24px;
+  }
+
+  .button-text-lg {
+    padding: 16px 32px;
+    font-size: 18px;
+    border-radius: var(--radius-xl);
+    line-height: 28px;
+  }
+
+  /* --- Sizes (icon-only) --- */
+  .button-icon-xs {
+    padding: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-md);
+  }
+
+  .button-icon-sm {
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-lg);
+  }
+
+  .button-icon-md {
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-xl);
+  }
+
+  .button-icon-lg {
+    padding: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-xl);
+  }
+
+  .button-rounded {
+    border-radius: 9999px !important;
+  }
+
+  .button-full-width {
+    width: 100%;
+  }
+
+  /* ============================================================
+     Fill Variants
+     ============================================================ */
+  .button-fill.button-primary {
+    background-color: var(--color-primary-500);
+    color: #ffffff;
+  }
+  .button-fill.button-primary:hover {
+    background-color: var(--color-primary-400);
+  }
+  .button-fill.button-primary:active {
+    background-color: var(--color-primary-300);
+  }
+
+  .button-fill.button-secondary {
+    background-color: var(--color-secondary-500);
+    color: #ffffff;
+  }
+  .button-fill.button-secondary:hover {
+    background-color: var(--color-secondary-400);
+  }
+  .button-fill.button-secondary:active {
+    background-color: var(--color-secondary-300);
+  }
+
+  .button-fill.button-success {
+    background-color: var(--color-success-500);
+    color: #ffffff;
+  }
+  .button-fill.button-success:hover {
+    background-color: var(--color-success-400);
+  }
+  .button-fill.button-success:active {
+    background-color: var(--color-success-300);
+  }
+
+  .button-fill.button-error {
+    background-color: var(--color-error-500);
+    color: #ffffff;
+  }
+  .button-fill.button-error:hover {
+    background-color: var(--color-error-400);
+  }
+  .button-fill.button-error:active {
+    background-color: var(--color-error-300);
+  }
+
+  .button-fill.button-gray {
+    background-color: var(--color-neutral-200);
+    color: var(--color-neutral-800);
+  }
+  .button-fill.button-gray:hover {
+    background-color: var(--color-neutral-300);
+  }
+  .button-fill.button-gray:active {
+    background-color: var(--color-neutral-400);
+  }
+
+  .button-fill.button-white {
+    background-color: #ffffff;
+    color: var(--color-neutral-800);
+    border-color: var(--color-neutral-200);
+  }
+  .button-fill.button-white:hover {
+    background-color: var(--color-neutral-50);
+  }
+  .button-fill.button-white:active {
+    background-color: var(--color-neutral-100);
+  }
+
+  /* ============================================================
+     Outline Variants
+     ============================================================ */
+  .button-outline.button-primary {
+    border-color: var(--color-primary-500);
+    color: var(--color-primary-500);
+    background: transparent;
+  }
+  .button-outline.button-primary:hover {
+    background-color: var(--color-primary-50);
+  }
+
+  .button-outline.button-secondary {
+    border-color: var(--color-secondary-500);
+    color: var(--color-secondary-500);
+    background: transparent;
+  }
+  .button-outline.button-secondary:hover {
+    background-color: var(--color-secondary-50);
+  }
+
+  .button-outline.button-success {
+    border-color: var(--color-success-500);
+    color: var(--color-success-500);
+    background: transparent;
+  }
+  .button-outline.button-success:hover {
+    background-color: var(--color-success-50);
+  }
+
+  .button-outline.button-error {
+    border-color: var(--color-error-500);
+    color: var(--color-error-500);
+    background: transparent;
+  }
+  .button-outline.button-error:hover {
+    background-color: var(--color-error-50);
+  }
+
+  .button-outline.button-gray {
+    border-color: var(--color-neutral-300);
+    color: var(--color-neutral-700);
+    background: transparent;
+  }
+  .button-outline.button-gray:hover {
+    background-color: var(--color-neutral-50);
+  }
+
+  .button-outline.button-white {
+    border-color: var(--color-neutral-200);
+    color: var(--color-neutral-700);
+    background: transparent;
+  }
+  .button-outline.button-white:hover {
+    background-color: var(--color-neutral-50);
+  }
+
+  /* ============================================================
+     Ghost Variants
+     ============================================================ */
+  .button-ghost.button-primary {
+    color: var(--color-primary-500);
+    background: transparent;
+  }
+  .button-ghost.button-primary:hover {
+    background-color: var(--color-primary-50);
+  }
+
+  .button-ghost.button-secondary {
+    color: var(--color-secondary-500);
+    background: transparent;
+  }
+  .button-ghost.button-secondary:hover {
+    background-color: var(--color-secondary-50);
+  }
+
+  .button-ghost.button-success {
+    color: var(--color-success-500);
+    background: transparent;
+  }
+  .button-ghost.button-success:hover {
+    background-color: var(--color-success-50);
+  }
+
+  .button-ghost.button-error {
+    color: var(--color-error-500);
+    background: transparent;
+  }
+  .button-ghost.button-error:hover {
+    background-color: var(--color-error-50);
+  }
+
+  .button-ghost.button-gray {
+    color: var(--color-neutral-600);
+    background: transparent;
+  }
+  .button-ghost.button-gray:hover {
+    background-color: var(--color-neutral-100);
+  }
+
+  .button-ghost.button-white {
+    color: var(--color-neutral-700);
+    background: transparent;
+  }
+  .button-ghost.button-white:hover {
+    background-color: var(--color-neutral-100);
+  }
+
+  /* ============================================================
+     Link Variant
+     ============================================================ */
+  .button-link {
+    background: transparent;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .button-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .button-link.button-primary {
+    color: var(--color-primary-500);
+  }
+  .button-link.button-secondary {
+    color: var(--color-secondary-500);
+  }
+  .button-link.button-success {
+    color: var(--color-success-500);
+  }
+  .button-link.button-error {
+    color: var(--color-error-500);
+  }
+  .button-link.button-gray {
+    color: var(--color-neutral-600);
+  }
+  .button-link.button-white {
+    color: var(--color-neutral-700);
+  }
+
+  /* ============================================================
+     Loading Spinner
+     ============================================================ */
+  .button-spinner {
+    animation: button-spin 1s linear infinite;
+  }
+
+  @keyframes button-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* ============================================================
+     Dark Mode
+     ============================================================ */
+  .dark .button-fill.button-gray {
+    background-color: var(--color-neutral-700);
+    color: var(--color-neutral-100);
+  }
+  .dark .button-fill.button-gray:hover {
+    background-color: var(--color-neutral-600);
+  }
+
+  .dark .button-fill.button-white {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-100);
+    border-color: var(--color-neutral-700);
+  }
+  .dark .button-outline.button-gray {
+    border-color: var(--color-neutral-600);
+    color: var(--color-neutral-300);
+  }
+  .dark .button-outline.button-white {
+    border-color: var(--color-neutral-600);
+    color: var(--color-neutral-300);
+  }
+  .dark .button-ghost.button-gray {
+    color: var(--color-neutral-300);
+  }
+  .dark .button-ghost.button-gray:hover {
+    background-color: var(--color-neutral-800);
+  }
+  .dark .button-ghost.button-white {
+    color: var(--color-neutral-300);
+  }
+}

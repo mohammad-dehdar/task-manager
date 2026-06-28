@@ -1,0 +1,134 @@
+@layer components {
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    animation: modal-fade-in 0.15s ease;
+  }
+
+  @keyframes modal-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .modal-panel {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    animation: modal-slide-in 0.2s ease;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  @keyframes modal-slide-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  /* Sizes */
+  .modal-sm {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .modal-md {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .modal-lg {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .modal-xl {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px 24px 0;
+  }
+
+  .modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-neutral-900);
+    margin: 0;
+  }
+
+  .modal-description {
+    font-size: 14px;
+    color: var(--color-neutral-500);
+    margin: 4px 0 0;
+  }
+
+  .modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    color: var(--color-neutral-400);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+  }
+
+  .modal-close:hover {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-600);
+  }
+
+  .modal-body {
+    padding: 16px 24px;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 0 24px 20px;
+  }
+
+  /* Dark mode */
+  .dark .modal-panel {
+    background-color: var(--color-neutral-800);
+  }
+
+  .dark .modal-title {
+    color: var(--color-neutral-100);
+  }
+
+  .dark .modal-close:hover {
+    background-color: var(--color-neutral-700);
+    color: var(--color-neutral-300);
+  }
+}
