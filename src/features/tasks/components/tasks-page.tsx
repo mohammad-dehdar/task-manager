@@ -95,6 +95,7 @@ export function TasksPage() {
           tasks={tasks}
           onEdit={handleEdit}
           onDelete={setDeletingTask}
+          onStatusChange={handleStatusChange}
         />
       )}
 

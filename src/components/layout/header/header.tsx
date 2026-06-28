@@ -2,6 +2,7 @@
 
 import { Menu, Bell, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 import { Avatar, Dropdown } from '@/components/ui';
@@ -14,6 +15,15 @@ export function Header({ onMenuClick, title }: HeaderProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const user = useAuthStore((s) => s.user);
+  const logout = useAuthStore((s) => s.logout);
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+    router.push('/login');
+  };
 
   useEffect(() => setMounted(true), []);
 
@@ -43,10 +53,10 @@ export function Header({ onMenuClick, title }: HeaderProps) {
         <Dropdown
           trigger={<Avatar size="sm" fallback={user?.name?.charAt(0) || 'U'} className="cursor-pointer" />}
           items={[
-            { label: user?.name || 'User', onClick: () => {} },
-            { label: user?.email || '', onClick: () => {} },
-            { label: 'Settings', onClick: () => {} },
-            { label: 'Logout', onClick: () => {}, destructive: true },
+            { label: user?.name || 'User' },
+            { label: user?.email || '' },
+            { label: 'Settings', onClick: () => router.push('/settings') },
+            { label: 'Logout', onClick: handleLogout, destructive: true },
           ]}
           position="bottom-end"
         />

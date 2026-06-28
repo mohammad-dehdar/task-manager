@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import { Button, Input, Select, Textarea, Modal } from '@/components/ui';
 
-import { PRIORITY_OPTIONS } from '../constants';
+import { PRIORITY_OPTIONS, STATUS_OPTIONS } from '../constants';
 import { createTaskSchema, type CreateTaskSchema } from '../schema';
 import type { Task } from '../types';
 import { useCreateTask } from '../hooks/use-create-task';
@@ -34,6 +34,7 @@ export function TaskForm({ open, onClose, task }: TaskFormProps) {
       title: '',
       description: '',
       priority: 'medium',
+      status: 'todo',
       dueDate: '',
     },
   });
@@ -44,10 +45,11 @@ export function TaskForm({ open, onClose, task }: TaskFormProps) {
         title: task.title,
         description: task.description || '',
         priority: task.priority,
+        status: task.status || 'todo',
         dueDate: task.dueDate ? task.dueDate.split('T')[0] : '',
       });
     } else {
-      reset({ title: '', description: '', priority: 'medium', dueDate: '' });
+      reset({ title: '', description: '', priority: 'medium', status: 'todo', dueDate: '' });
     }
   }, [task, reset]);
 
@@ -99,7 +101,6 @@ export function TaskForm({ open, onClose, task }: TaskFormProps) {
         <div className="grid grid-cols-2 gap-4">
           <Select
             label="Priority"
-            value="medium"
             options={PRIORITY_OPTIONS}
             {...register('priority')}
           />
@@ -109,6 +110,13 @@ export function TaskForm({ open, onClose, task }: TaskFormProps) {
             {...register('dueDate')}
           />
         </div>
+        {isEditing && (
+          <Select
+            label="Status"
+            options={STATUS_OPTIONS}
+            {...register('status')}
+          />
+        )}
       </form>
     </Modal>
   );
