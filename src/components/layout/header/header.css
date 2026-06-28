@@ -34,6 +34,7 @@
 
   .header-menu-btn:hover {
     background-color: var(--color-neutral-100);
+    color: var(--color-neutral-800);
   }
 
   .header-title {
@@ -102,6 +103,19 @@
 
   .dark .header-title {
     color: var(--color-neutral-100);
+  }
+
+  .dark .header-menu-btn {
+    color: var(--color-neutral-400);
+  }
+
+  .dark .header-menu-btn:hover {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-200);
+  }
+
+  .dark .header-icon-btn {
+    color: var(--color-neutral-400);
   }
 
   .dark .header-icon-btn:hover {

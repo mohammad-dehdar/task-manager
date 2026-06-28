@@ -29,16 +29,16 @@ export function DataTable<T extends Record<string, unknown>>({
 }: DataTableInternalProps<T>) {
   if (isLoading) {
     return (
-      <div className="w-full overflow-hidden rounded-xl border border-neutral-200">
-        <div className="bg-neutral-50 px-4 py-3">
+      <div className="w-full overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+        <div className="bg-neutral-50 dark:bg-neutral-800 px-4 py-3">
           <div className="flex gap-4">
-            {columns.map((col, i) => (
+            {columns.map((_, i) => (
               <Skeleton key={i} width="auto" height="sm" className="flex-1" />
             ))}
           </div>
         </div>
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="flex gap-4 border-t border-neutral-100 px-4 py-3">
+          <div key={i} className="flex gap-4 border-t border-neutral-100 dark:border-neutral-700 px-4 py-3">
             {columns.map((_, j) => (
               <Skeleton key={j} width="auto" height="sm" className="flex-1" />
             ))}
@@ -50,17 +50,17 @@ export function DataTable<T extends Record<string, unknown>>({
 
   if (data.length === 0) {
     return (
-      <div className="flex items-center justify-center rounded-xl border border-neutral-200 py-16">
-        {emptyState || <p className="text-sm text-neutral-500">No data available</p>}
+      <div className="flex items-center justify-center rounded-xl border border-neutral-200 dark:border-neutral-700 py-16">
+        {emptyState || <p className="text-sm text-neutral-500 dark:text-neutral-400">No data available</p>}
       </div>
     );
   }
 
   return (
-    <div className="w-full overflow-hidden rounded-xl border border-neutral-200">
+    <div className="w-full overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
       <table className="w-full">
         <thead>
-          <tr className="bg-neutral-50 text-left text-sm font-medium text-neutral-600">
+          <tr className="bg-neutral-50 dark:bg-neutral-800 text-left text-sm font-medium text-neutral-600 dark:text-neutral-400">
             {columns.map((col, index) => (
               <th key={index} className={cn('px-4 py-3', col.className)}>
                 {col.header}
@@ -73,8 +73,8 @@ export function DataTable<T extends Record<string, unknown>>({
             <tr
               key={rowIndex}
               className={cn(
-                'border-t border-neutral-100 text-sm text-neutral-800',
-                onRowClick && 'cursor-pointer hover:bg-neutral-50 transition-colors',
+                'border-t border-neutral-100 dark:border-neutral-700 text-sm text-neutral-800 dark:text-neutral-200',
+                onRowClick && 'cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors',
               )}
               onClick={() => onRowClick?.(row)}
             >

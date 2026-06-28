@@ -11,9 +11,9 @@ interface TaskBoardProps {
 }
 
 const COLUMNS: { status: TaskStatus; label: string; color: string }[] = [
-  { status: 'todo', label: 'To Do', color: 'bg-neutral-100 dark:bg-neutral-800' },
-  { status: 'in-progress', label: 'In Progress', color: 'bg-info-50 dark:bg-info-900/30' },
-  { status: 'done', label: 'Done', color: 'bg-success-50 dark:bg-success-900/30' },
+  { status: 'todo', label: 'To Do', color: 'bg-neutral-100 dark:bg-neutral-800/60' },
+  { status: 'in-progress', label: 'In Progress', color: 'bg-info-50 dark:bg-info-900/20' },
+  { status: 'done', label: 'Done', color: 'bg-success-50 dark:bg-success-900/20' },
 ];
 
 export function TaskBoard({ tasks, onEdit, onDelete, onStatusChange }: TaskBoardProps) {

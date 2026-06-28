@@ -12,12 +12,8 @@
   }
 
   @keyframes modal-fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   .modal-panel {
@@ -45,25 +41,10 @@
   }
 
   /* Sizes */
-  .modal-sm {
-    width: 100%;
-    max-width: 400px;
-  }
-
-  .modal-md {
-    width: 100%;
-    max-width: 520px;
-  }
-
-  .modal-lg {
-    width: 100%;
-    max-width: 640px;
-  }
-
-  .modal-xl {
-    width: 100%;
-    max-width: 800px;
-  }
+  .modal-sm { width: 100%; max-width: 400px; }
+  .modal-md { width: 100%; max-width: 520px; }
+  .modal-lg { width: 100%; max-width: 640px; }
+  .modal-xl { width: 100%; max-width: 800px; }
 
   .modal-header {
     display: flex;
@@ -119,16 +100,31 @@
   }
 
   /* Dark mode */
+  .dark .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
   .dark .modal-panel {
     background-color: var(--color-neutral-800);
+    border: 1px solid var(--color-neutral-700);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4),
+      0 8px 10px -6px rgba(0, 0, 0, 0.3);
   }
 
   .dark .modal-title {
     color: var(--color-neutral-100);
   }
 
+  .dark .modal-description {
+    color: var(--color-neutral-400);
+  }
+
+  .dark .modal-close {
+    color: var(--color-neutral-400);
+  }
+
   .dark .modal-close:hover {
     background-color: var(--color-neutral-700);
-    color: var(--color-neutral-300);
+    color: var(--color-neutral-200);
   }
 }

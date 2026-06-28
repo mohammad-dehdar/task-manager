@@ -18,8 +18,8 @@ export function ProfileTab() {
           </button>
         </div>
         <div>
-          <p className="text-sm font-medium text-neutral-800">{user?.name || 'User'}</p>
-          <p className="text-xs text-neutral-500">{user?.email || 'user@example.com'}</p>
+          <p className="text-sm font-medium text-neutral-800 dark:text-neutral-100">{user?.name || 'User'}</p>
+          <p className="text-xs text-neutral-500 dark:text-neutral-400">{user?.email || 'user@example.com'}</p>
         </div>
       </div>
 

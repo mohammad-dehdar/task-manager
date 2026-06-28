@@ -106,11 +106,36 @@
     gap: 12px;
     padding: 16px;
     border-top: 1px solid var(--color-neutral-100);
+    min-width: 0;
   }
 
   .sidebar-collapsed .sidebar-footer {
     justify-content: center;
     padding: 16px 8px;
+  }
+
+  .sidebar-user {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .sidebar-user-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-neutral-800);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sidebar-user-email {
+    font-size: 11px;
+    color: var(--color-neutral-500);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* Dark mode */
@@ -147,7 +172,20 @@
     color: var(--color-primary-400);
   }
 
+  .dark .sidebar-item-active:hover {
+    background-color: rgba(253, 101, 25, 0.2);
+    color: var(--color-primary-300);
+  }
+
   .dark .sidebar-footer {
     border-top-color: var(--color-neutral-700);
+  }
+
+  .dark .sidebar-user-name {
+    color: var(--color-neutral-200);
+  }
+
+  .dark .sidebar-user-email {
+    color: var(--color-neutral-500);
   }
 }

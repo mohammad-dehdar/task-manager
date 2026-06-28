@@ -87,6 +87,7 @@
     align-items: center;
     color: var(--color-neutral-400);
     pointer-events: none;
+    z-index: 1;
   }
 
   .input-icon-end {
@@ -95,16 +96,16 @@
     display: flex;
     align-items: center;
     color: var(--color-neutral-400);
+    z-index: 1;
   }
 
-  .input-sm ~ .input-icon-start,
-  .input-sm ~ * .input-icon-start {
-    left: 10px;
+  /* Padding adjustments when icons are present */
+  .input-field-wrapper:has(.input-icon-start) .input {
+    padding-left: 36px;
   }
 
-  .input-lg ~ .input-icon-start,
-  .input-lg ~ * .input-icon-start {
-    left: 16px;
+  .input-field-wrapper:has(.input-icon-end) .input {
+    padding-right: 36px;
   }
 
   .input-hint {
@@ -128,7 +129,44 @@
     color: var(--color-neutral-500);
   }
 
+  .dark .input:focus {
+    border-color: var(--color-primary-400);
+    box-shadow: 0 0 0 3px rgba(253, 101, 25, 0.15);
+  }
+
+  .dark .input-default {
+    border-color: var(--color-neutral-600);
+  }
+
+  .dark .input-error {
+    border-color: var(--color-error-400);
+  }
+
+  .dark .input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+  }
+
+  .dark .input-success {
+    border-color: var(--color-success-400);
+  }
+
   .dark .input-label {
     color: var(--color-neutral-200);
+  }
+
+  .dark .input-icon-start {
+    color: var(--color-neutral-500);
+  }
+
+  .dark .input-icon-end {
+    color: var(--color-neutral-500);
+  }
+
+  .dark .input-hint {
+    color: var(--color-neutral-400);
+  }
+
+  .dark .input-hint-error {
+    color: var(--color-error-400);
   }
 }

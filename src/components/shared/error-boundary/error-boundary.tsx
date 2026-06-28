@@ -39,11 +39,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
       return (
         <div className="flex flex-col items-center justify-center py-16 text-center">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-error-100 text-error-500">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-error-100 dark:bg-error-900/30 text-error-500 dark:text-error-400">
             <AlertTriangle size={24} />
           </div>
-          <h3 className="text-lg font-semibold text-neutral-800">Something went wrong</h3>
-          <p className="mt-1 max-w-sm text-sm text-neutral-500">
+          <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">Something went wrong</h3>
+          <p className="mt-1 max-w-sm text-sm text-neutral-500 dark:text-neutral-400">
             {this.state.error?.message || 'An unexpected error occurred'}
           </p>
           <Button variant="outline" color="gray" onClick={this.handleReset} className="mt-4">

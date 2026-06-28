@@ -36,31 +36,48 @@ export function TaskForm({ open, onClose, task }: TaskFormProps) {
       priority: 'medium',
       status: 'todo',
       dueDate: '',
+      projectId: '',
     },
   });
 
   useEffect(() => {
-    if (task) {
-      reset({
-        title: task.title,
-        description: task.description || '',
-        priority: task.priority,
-        status: task.status || 'todo',
-        dueDate: task.dueDate ? task.dueDate.split('T')[0] : '',
-      });
-    } else {
-      reset({ title: '', description: '', priority: 'medium', status: 'todo', dueDate: '' });
+    if (open) {
+      if (task) {
+        reset({
+          title: task.title,
+          description: task.description || '',
+          priority: task.priority,
+          status: task.status || 'todo',
+          dueDate: task.dueDate ? task.dueDate.split('T')[0] : '',
+          projectId: task.projectId || '',
+        });
+      } else {
+        reset({
+          title: '',
+          description: '',
+          priority: 'medium',
+          status: 'todo',
+          dueDate: '',
+          projectId: '',
+        });
+      }
     }
-  }, [task, reset]);
+  }, [task, open, reset]);
 
   const onSubmit = (data: CreateTaskSchema) => {
+    const dto = {
+      ...data,
+      dueDate: data.dueDate || undefined,
+      projectId: data.projectId || undefined,
+    };
+
     if (isEditing && task) {
       updateMutation.mutate(
-        { id: task.id, dto: data },
+        { id: task.id, dto },
         { onSuccess: onClose },
       );
     } else {
-      createMutation.mutate(data, { onSuccess: onClose });
+      createMutation.mutate(dto, { onSuccess: onClose });
     }
   };
 
@@ -104,19 +121,17 @@ export function TaskForm({ open, onClose, task }: TaskFormProps) {
             options={PRIORITY_OPTIONS}
             {...register('priority')}
           />
-          <Input
-            label="Due Date"
-            type="date"
-            {...register('dueDate')}
-          />
-        </div>
-        {isEditing && (
           <Select
             label="Status"
             options={STATUS_OPTIONS}
             {...register('status')}
           />
-        )}
+        </div>
+        <Input
+          label="Due Date"
+          type="date"
+          {...register('dueDate')}
+        />
       </form>
     </Modal>
   );

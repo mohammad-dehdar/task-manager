@@ -94,4 +94,30 @@
     border-color: var(--color-neutral-600);
     color: var(--color-neutral-100);
   }
+
+  .dark .select:focus {
+    border-color: var(--color-primary-400);
+    box-shadow: 0 0 0 3px rgba(253, 101, 25, 0.15);
+  }
+
+  .dark .select-default {
+    border-color: var(--color-neutral-600);
+  }
+
+  .dark .select option {
+    background-color: var(--color-neutral-800);
+    color: var(--color-neutral-100);
+  }
+
+  .dark .select-chevron {
+    color: var(--color-neutral-500);
+  }
+
+  .dark .select-icon-start {
+    color: var(--color-neutral-500);
+  }
+
+  .dark .input-label {
+    color: var(--color-neutral-200);
+  }
 }
