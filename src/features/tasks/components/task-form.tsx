@@ -28,7 +28,7 @@ export function TaskForm({ open, onClose, task }: TaskFormProps) {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<CreateTaskSchema>({
+  } = useForm({
     resolver: zodResolver(createTaskSchema),
     defaultValues: {
       title: '',

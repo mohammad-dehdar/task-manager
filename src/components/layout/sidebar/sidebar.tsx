@@ -11,8 +11,6 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Avatar } from '@/components/ui';
-import { useAuthStore } from '@/features/auth/store';
 import { ROUTES } from '@/constants';
 import { cn } from '@/utils';
 
@@ -28,7 +26,6 @@ const NAV_ITEMS = [
 
 export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   const pathname = usePathname();
-  const user = useAuthStore((s) => s.user);
 
   return (
     <aside className={cn('sidebar', collapsed && 'sidebar-collapsed')}>
@@ -60,20 +57,6 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
           );
         })}
       </nav>
-
-      <div className="sidebar-footer">
-        <Avatar
-          size="sm"
-          fallback={user?.name?.charAt(0)?.toUpperCase() || 'U'}
-          src={user?.avatar}
-        />
-        {!collapsed && (
-          <div className="sidebar-user">
-            <span className="sidebar-user-name">{user?.name || 'User'}</span>
-            <span className="sidebar-user-email">{user?.email || ''}</span>
-          </div>
-        )}
-      </div>
     </aside>
   );
 }

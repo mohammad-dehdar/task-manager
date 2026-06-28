@@ -20,14 +20,12 @@ export function useTasks(filters?: TaskFilter) {
   if (filters?.search) params.search = filters.search;
 
   const query = useQuery({
-    queryKey: [QUERY_KEYS.TASKS, filters],
+    queryKey: [...QUERY_KEYS.TASKS, filters],  // این مهمه
     queryFn: () => tasksApi.getAll(Object.keys(params).length ? params : undefined),
   });
 
   useEffect(() => {
-    if (query.data) {
-      setTasks(query.data);
-    }
+    if (query.data) setTasks(query.data);
     setLoading(query.isLoading);
   }, [query.data, query.isLoading, setTasks, setLoading]);
 

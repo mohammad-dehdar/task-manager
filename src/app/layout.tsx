@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { fontSans, fontDana } from '@/config/fonts';
+import { poppins, dana } from '@/config/fonts/fonts';
 import { Providers } from '@/providers';
 
 import './globals.css';
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html
       lang="fa"
       suppressHydrationWarning
-      className={`${fontSans.variable} ${fontDana.variable}`}
+      className={`${poppins.variable} ${dana.variable}`}
     >
       <body>
         <Providers>{children}</Providers>

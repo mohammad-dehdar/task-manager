@@ -2,10 +2,10 @@
 
 import { MoreHorizontal, Calendar, Trash2, Edit } from 'lucide-react';
 
-import { Badge, Checkbox, Dropdown, type BadgeColor } from '@/components/ui';
+import { Badge, Dropdown, type BadgeColor } from '@/components/ui';
 import { cn } from '@/utils';
 
-import { PRIORITY_MAP, STATUS_MAP } from '../constants';
+import { PRIORITY_MAP, STATUS_MAP, STATUS_OPTIONS } from '../constants';
 import type { Task, TaskStatus } from '../types';
 
 interface TaskCardProps {
@@ -18,15 +18,18 @@ interface TaskCardProps {
 export function TaskCard({ task, onStatusChange, onEdit, onDelete }: TaskCardProps) {
   return (
     <div className="group flex items-start gap-3 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 transition-all hover:shadow-sm">
-      <Checkbox
-        checked={task.status === 'done'}
-        onChange={() =>
-          onStatusChange?.(
-            task.id,
-            task.status === 'done' ? 'todo' : 'done',
-          )
-        }
-      />
+      
+      <select
+        value={task.status}
+        onChange={(e) => onStatusChange?.(task.id, e.target.value as TaskStatus)}
+        className="mt-0.5 text-xs rounded-md border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 px-1 py-1 cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary-500 flex-shrink-0"
+      >
+        {STATUS_OPTIONS.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
 
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">

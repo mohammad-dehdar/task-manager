@@ -6,8 +6,8 @@
 
 @theme inline {
   /* --- Fonts --- */
-  --font-sans: var(--font-dana), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-inter: var(--font-inter);
+  --font-sans: var(--font-dana), var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-inter: var(--font-poppins);
   --font-dana: var(--font-dana);
 
   /* --- Primary (Orange) --- */

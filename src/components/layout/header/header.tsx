@@ -29,7 +29,7 @@ export function Header({ onMenuClick, title }: HeaderProps) {
 
   return (
     <header className="header">
-      <div className="header-left">
+      <div className="header-left hidden md:block">
         <button className="header-menu-btn" onClick={onMenuClick} aria-label="Toggle menu">
           <Menu size={20} />
         </button>
@@ -53,7 +53,6 @@ export function Header({ onMenuClick, title }: HeaderProps) {
         <Dropdown
           trigger={<Avatar size="sm" fallback={user?.name?.charAt(0) || 'U'} className="cursor-pointer" />}
           items={[
-            { label: user?.name || 'User' },
             { label: user?.email || '' },
             { label: 'Settings', onClick: () => router.push('/settings') },
             { label: 'Logout', onClick: handleLogout, destructive: true },
